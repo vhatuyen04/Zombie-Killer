@@ -9,6 +9,6 @@ The game ends when your or the ship's health reaches zero or you defeat the boss
 
 Controls:
 
-Use the arrow keys to move
-Use the mouse to attack
+Use the arrow keys to move.
+Use the mouse to attack.
 Good luck, and have fun!
