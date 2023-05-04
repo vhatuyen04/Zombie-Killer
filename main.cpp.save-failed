@@ -1,0 +1,145 @@
+#include <SDL.h>
+#include <SDL_image.h>
+#include <iostream>
+#include <vector>
+
+#include "RenderWindow.hpp"
+#include "Entity.hpp"
+#include "player.cpp"
+
+using namespace std;
+
+vector <Entity> platform0;
+
+const int window_height = 1200, window_width = 600;
+const int character_height = 32*3, character_width = 32*4;
+
+void updateCharacterPosition(Entity &en, const Uint8* currentKeyStates)
+{
+    if (currentKeyStates[SDL_SCANCODE_UP] && en.y > 0)
+    {
+        // Check if the character is already at the top of the screen
+        en.y -= 10;
+    }
+    if (currentKeyStates[SDL_SCANCODE_DOWN] && en.y <= window_width - character_width -10)
+    {
+        // Check if the character is already at the bottom of the screen
+        en.y += 10;
+    }
+    if (currentKeyStates[SDL_SCANCODE_LEFT] && en.x > 0) {
+        en.x -= 25;
+    }
+    if (currentKeyStates[SDL_SCANCODE_RIGHT] && en.x < window_height - character_height - 25) {
+        en.x += 25;
+    }
+}
+
+/*void handleInput (SDL_Event &e, Entity &en) {
+    // Check for key presses
+    if (e.type == SDL_KEYDOWN && e.key.repeat == 0) {
+        switch (e.key.keysym.sym) {
+            case SDLK_UP:
+                // Move the player up
+                if (en.y + en.v_y >= 15)
+                en.v_y = -15;
+                break;
+            case SDLK_DOWN:
+                // Move the player down
+                if (en.y + en.v_y + 15 <= 600) en.v_y = 15;
+                break;
+        }
+    }
+    // Check for key releases
+    else if (e.type == SDL_KEYUP && e.key.repeat == 0) {
+        switch (e.key.keysym.sym) {
+            case SDLK_UP:
+                // Stop moving the player up
+                en.v_y = 0;
+                break;
+            case SDLK_DOWN:
+                // Stop moving the player down
+                en.v_y = 0;
+                break;
+        }
+    }
+}*/
+
+int main(int argc, char* argv[]) {
+    // Initialize SDL
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+        // handle initialization error
+    }
+    if (!(IMG_Init(IMG_INIT_PNG))) {
+        cout<<"IMG_init has failed. Error: "<<SDL_GetError()<<endl;
+    }
+    // Create a window
+    RenderWindow window ("Zombie Shooter", window_height, window_width);
+
+    //SDL_Texture* zombie = window.loadTexture("Others/data/Images/zombie.png");
+    Entity player(0, 180, character_height, character_width);
+    player.status = 0;
+    player.addAnimation(window.renderer, "data/Images/NightBorne1.png", 0);
+    player.addAnimation(window.renderer, "data/Images/NightBorne2.png", 0);
+    player.addAnimation(window.renderer, "data/Images/NightBorne3.png", 0);
+    player.addAnimation(window.renderer, "data/Images/NightBorne4.png", 0);
+    player.addAnimation(window.renderer, "data/Images/NightBorne5.png", 0);
+    player.addAnimation(window.renderer, "data/Images/NightBorne6.png", 0);
+    player.addAnimation(window.renderer, "data/Images/NightBorne7.png", 0);
+    player.addAnimation(window.renderer, "data/Images/NightBorne8.png", 0);
+    player.addAnimation(window.renderer, "data/Images/NightBorne9.png", 0);
+    player.state[0] = 0;
+    /*SDL_Texture* player[9] = {window.loadTexture("data/Images/NightBorne1.png"),
+                              window.loadTexture("data/Images/NightBorne2.png"),
+                              window.loadTexture("data/Images/NightBorne3.png"),
+                              window.loadTexture("data/Images/NightBorne4.png"),
+                              window.loadTexture("data/Images/NightBorne5.png"),
+                              window.loadTexture("data/Images/NightBorne6.png"),
+                              window.loadTexture("data/Images/NightBorne7.png"),
+                              window.loadTexture("data/Images/NightBorne8.png"),
+                              window.loadTexture("data/Images/NightBorne9.png")};*/
+    //SDL_Texture* zombies = window.loadTexture("data/Images/zombie.png");
+
+    /*for (int i = 0; i < 9; i++) {
+        platform0.push_back(Entity (0, 180, character_height, character_width, player[i]));
+    }*/
+    //vector <Entity> zombie = {(700, 215, zombie)};
+
+
+    bool gameRunning = true;
+    SDL_Event e;
+
+    int animationDelay = 150;
+    Uint32 last_update_time_  = 0;
+    while (gameRunning) {
+        while (SDL_PollEvent(&e)) {
+            if (e.type == SDL_QUIT) {
+                gameRunning = false;
+            }
+
+        }
+        window.clear();
+
+        window.render (player);
+        Uint32 current_time = SDL_GetTicks();
+        Uint32 time_elapsed = current_time - last_update_time_;
+        if (time_elapsed >= 150) {
+        // Advance to the next animation frame
+            player.state[player.status] = (player.state[player.status]+1)%player.texture[player.status].size();
+            last_update_time_ = current_time;
+        }
+
+        const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+        updateCharacterPosition(player, currentKeyStates);
+        SDL_Delay(20);
+           window.display();
+    }
+        //SDL_Delay(animationDelay);
+        /*for (Entity& z: zombie) {
+            window.render(z);
+
+        }*/
+    window.cleanUp();
+    SDL_Quit();
+    return 0;
+}
+

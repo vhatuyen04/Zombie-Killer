@@ -1,0 +1,121 @@
+# depslib dependency file v1.0
+1683228938 source:d:\documentc\zombieshooter\zombieshooter\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<iostream>
+	<vector>
+	<sstream>
+	<stdlib.h>
+	<ctime>
+	<queue>
+	<algorithm>
+	<SDL_ttf.h>
+	<cmath>
+	"RenderWindow.hpp"
+	"Entity.hpp"
+	"Character.hpp"
+	"Zombie.hpp"
+	"BloodBar.hpp"
+	"Boss.hpp"
+
+1683106390 d:\documentc\zombieshooter\zombieshooter\renderwindow.hpp
+	<SDL.h>
+	<SDL_image.h>
+	<iostream>
+	"Entity.hpp"
+	"Boss.hpp"
+
+1683128441 source:d:\documentc\zombieshooter\zombieshooter\renderwindow.cpp
+	"RenderWindow.hpp"
+	"Entity.hpp"
+	"Boss.hpp"
+
+1683195146 source:d:\documentc\zombieshooter\zombieshooter\entity.cpp
+	"Entity.hpp"
+	<iostream>
+
+1683189909 d:\documentc\zombieshooter\zombieshooter\entity.hpp
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+	<vector>
+
+1680682431 source:d:\documentc\zombieshooter\zombieshooter\player.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<iostream>
+	<vector>
+	"RenderWindow.hpp"
+	"Entity.hpp"
+
+1680682029 d:\documentc\zombieshooter\zombieshooter\player.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<iostream>
+	<vector>
+	"RenderWindow.hpp"
+	"Entity.hpp"
+
+1683225521 source:d:\documentc\zombieshooter\zombieshooter\character.cpp
+	"Character.hpp"
+
+1683215745 d:\documentc\zombieshooter\zombieshooter\character.hpp
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+	<iostream>
+	<vector>
+	<sstream>
+	"Entity.hpp"
+	"Zombie.hpp"
+	"BloodBar.hpp"
+	"Boss.hpp"
+
+1683201249 source:d:\documentc\zombieshooter\zombieshooter\zombie.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+	<vector>
+	<stdlib.h>
+	<sstream>
+	<time.h>
+	<iostream>
+	"Zombie.hpp"
+
+1683195066 d:\documentc\zombieshooter\zombieshooter\zombie.hpp
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+	<vector>
+	"Entity.hpp"
+	"Character.hpp"
+	"BloodBar.hpp"
+
+1683199642 source:d:\documentc\zombieshooter\zombieshooter\bloodbar.cpp
+	<iostream>
+	"BloodBar.hpp"
+
+1683106516 d:\documentc\zombieshooter\zombieshooter\bloodbar.hpp
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+	<iostream>
+	<vector>
+
+1683219688 d:\documentc\zombieshooter\zombieshooter\boss.hpp
+	<SDL.h>
+	<SDL_image.h>
+	<string>
+	<iostream>
+	<vector>
+	<sstream>
+	<cmath>
+	<queue>
+	"Entity.hpp"
+	"Character.hpp"
+
+1683228768 source:d:\documentc\zombieshooter\zombieshooter\boss.cpp
+	"Boss.hpp"
+
+1683216909 source:d:\documentc\zombieshooter\zombieshooter\menu.cpp
+
